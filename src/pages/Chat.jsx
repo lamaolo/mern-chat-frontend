@@ -24,17 +24,39 @@ const Chat = (props) => {
       });
   }, []);
 
-  const handleMessageSubmit = async (messageValue) => {
-    try {
-      // Hago POST a la API para crear un nuevo mensaje en la base de datos,
-      // Automáticamente cuando se crea un mensaje, también se emite por WebSocket
-      await axios.post("http://localhost:8080/message", {
-        message: messageValue,
-        user: state.user._id,
-        chat: props.match.params.id,
-      });
-    } catch (error) {
-      console.error(error);
+  const handleMessageSubmit = async (messageValue, image) => {
+    console.log("message: ", messageValue);
+    console.log("image: ", image);
+
+    if (image) {
+      let formData = new FormData();
+      formData.append("user", state.user._id);
+      formData.append("chat", id);
+      formData.append("message", messageValue);
+      formData.append("file", image);
+
+      try {
+        await axios.post("http://localhost:8080/message", formData, {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      try {
+        // Hago POST a la API para crear un nuevo mensaje en la base de datos,
+        // Automáticamente cuando se crea un mensaje, también se emite por WebSocket
+        await axios.post("http://localhost:8080/message", {
+          message: messageValue,
+          user: state.user._id,
+          chat: id,
+          file: image,
+        });
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 

@@ -11,7 +11,7 @@
   border-radius: 0 18px 18px 18px;
   margin: 5px 0;
   padding: 10px;
-  max-width: 60%;
+  max-width: 65%;
   align-self: flex-start;
   background: #f3969a;
   color: white;
@@ -30,6 +30,12 @@
 
 .message-content {
   margin: 0;
+}
+
+.message-image {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 18px;
 }
 
 .write-message {
@@ -59,4 +65,18 @@
   font-weight: bold;
   font-size: 14px;
   color: white;
+}
+
+.upload-photo {
+  margin-right: 10px;
+  padding: 0 10px;
+  height: 30px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 10000px;
+  background: #78c2ad;
+  cursor: pointer;
 }

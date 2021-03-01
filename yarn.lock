@@ -3331,6 +3331,11 @@
   "resolved" "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz"
   "version" "1.0.0"
 
+"bootstrap-icons@^1.4.0":
+  "integrity" "sha512-EynaOv/G/X/sQgPUqkdLJoxPrWk73wwsVjVR3cDNYO0jMS58poq7DOC2CraBWlBt1AberEmt0blfw4ony2/ZIg=="
+  "resolved" "https://registry.npmjs.org/bootstrap-icons/-/bootstrap-icons-1.4.0.tgz"
+  "version" "1.4.0"
+
 "bootswatch@^4.6.0":
   "integrity" "sha512-Yr6YqFBC8jwTzoJoLViYlvO97IhPWGqZEm+6FXHfD/G6gbUok6sZkdXxdh4Zb6iCGEwr9p7zGCn38yKQD/bh2Q=="
   "resolved" "https://registry.npmjs.org/bootswatch/-/bootswatch-4.6.0.tgz"
