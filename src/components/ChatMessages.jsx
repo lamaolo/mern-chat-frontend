@@ -11,7 +11,9 @@ const ChatMessages = ({ messages, setMessages, handleMessageSubmit, id }) => {
   const [messageValue, setMessageValue] = useState("");
   const [image, setImage] = useState("");
 
-  const socket = openSocket("https://mern-chat-backend.herokuapp.com");
+  const socket = openSocket("https://mern-chat-backend.herokuapp.com", {
+    transports: ["websocket"],
+  });
 
   useEffect(() => {
     // DEsde el Backend, cada vez que agrego un nuevo mensaje por REST, el socket emite el mismo mensaje
