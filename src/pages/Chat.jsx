@@ -17,7 +17,7 @@ const Chat = (props) => {
   }
 
   useEffect(() => {
-    fetch("http://localhost:8080/message/" + id)
+    fetch("https://mern-chat-backend.herokuapp.com/message/" + id)
       .then((data) => data.json())
       .then((data) => {
         setMessages(data.body);
@@ -36,11 +36,15 @@ const Chat = (props) => {
       formData.append("file", image);
 
       try {
-        await axios.post("http://localhost:8080/message", formData, {
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        });
+        await axios.post(
+          "https://mern-chat-backend.herokuapp.com/message",
+          formData,
+          {
+            headers: {
+              "content-type": "multipart/form-data",
+            },
+          }
+        );
       } catch (error) {
         console.error(error);
       }
@@ -48,7 +52,7 @@ const Chat = (props) => {
       try {
         // Hago POST a la API para crear un nuevo mensaje en la base de datos,
         // Automáticamente cuando se crea un mensaje, también se emite por WebSocket
-        await axios.post("http://localhost:8080/message", {
+        await axios.post("https://mern-chat-backend.herokuapp.com/message", {
           message: messageValue,
           user: state.user._id,
           chat: id,

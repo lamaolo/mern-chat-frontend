@@ -8,7 +8,7 @@ const NotLoggedScreen = () => {
   const [, dispatch] = useContext(UserContext);
 
   useEffect(() => {
-    fetch("http://localhost:8080/user")
+    fetch("https://mern-chat-backend.herokuapp.com/user")
       .then((data) => {
         return data.json();
       })
