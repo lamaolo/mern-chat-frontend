@@ -25,9 +25,6 @@ const Chat = (props) => {
   }, []);
 
   const handleMessageSubmit = async (messageValue, image) => {
-    console.log("message: ", messageValue);
-    console.log("image: ", image);
-
     if (image) {
       let formData = new FormData();
       formData.append("user", state.user._id);

@@ -33,15 +33,14 @@ const ChatMessages = ({ messages, setMessages, handleMessageSubmit, id }) => {
 
   const handleTextChange = (e) => {
     setMessageValue(e.target.value);
-    console.log(messageValue);
-    console.log(image);
   };
 
   const handleImageChange = (e) => {
-    if (e.target.files[0].size < 512000) {
+    // Que el archivo pese menos de 128 kilobytes
+    if (e.target.files[0].size < 128000) {
       setImage(e.target.files[0]);
     } else {
-      alert("Error:\nEl tamaño máximo de la foto es de 512 kilobytes.");
+      alert("Error:\nEl tamaño máximo de la foto es de 128 kilobytes.");
     }
   };
 
