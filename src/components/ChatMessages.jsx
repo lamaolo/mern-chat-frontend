@@ -72,7 +72,7 @@ const ChatMessages = ({ messages, setMessages, handleMessageSubmit, id }) => {
             {message.file && (
               <img
                 className="message-image"
-                src={message.file}
+                src={`https://mern-chat-backend.herokuapp.com${message.file}`}
                 alt={message.name}
               />
             )}
