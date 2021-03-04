@@ -11,12 +11,12 @@ const ChatMessages = ({ messages, setMessages, handleMessageSubmit, id }) => {
   const [messageValue, setMessageValue] = useState("");
   const [image, setImage] = useState("");
 
-  const socket = openSocket("https://mern-chat-backend.herokuapp.com", {
-    transports: ["websocket"],
-  });
-
   useEffect(() => {
-    // DEsde el Backend, cada vez que agrego un nuevo mensaje por REST, el socket emite el mismo mensaje
+    const socket = openSocket("https://mern-chat-backend.herokuapp.com", {
+      transports: ["websocket"],
+    });
+
+    // Desde el Backend, cada vez que agrego un nuevo mensaje por REST, el socket emite el mismo mensaje
     socket.on("message", (data) => {
       if (data[0].chat === id) {
         setMessages((oldMmessages) => [...oldMmessages, data[0]]);
@@ -38,11 +38,20 @@ const ChatMessages = ({ messages, setMessages, handleMessageSubmit, id }) => {
   };
 
   const handleImageChange = (e) => {
-    // Que el archivo pese menos de 128 kilobytes
-    if (e.target.files[0].size < 128000) {
-      setImage(e.target.files[0]);
+    console.log(e.target.files[0]);
+    console.log(e.target.files[0]["type"].split("/")[0]);
+
+    // Comprobar que el archivo subido sea una imagen
+    if (e.target.files[0]["type"].split("/")[0] == "image") {
+      // Comprobar que el archivo pese menos de 128 kilobytes
+      if (e.target.files[0].size < 128000) {
+        setImage(e.target.files[0]);
+      } else {
+        alert("Error:\nEl tamaño máximo de la foto es de 128 kilobytes.");
+      }
     } else {
-      alert("Error:\nEl tamaño máximo de la foto es de 128 kilobytes.");
+      alert("Error:\nEl archivo subido no es una imagen");
+      return null;
     }
   };
 
@@ -111,7 +120,7 @@ const ChatMessages = ({ messages, setMessages, handleMessageSubmit, id }) => {
           name="photo"
           id="upload-photo"
           hidden
-          accept="image/png, image/jpeg, image/jpg, image/svg"
+          accept="image/*"
         />
         <button type="submit" title="Envíar mensaje">
           Enviar
