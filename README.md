@@ -18,6 +18,10 @@ Chat en tiempo real, construido usando el stack MERN: MongoDB, Express.js, React
 
 [Click aquí para ir al live view.](https://mern-chat-frontend-lamaolo.vercel.app/)
 
+### Backend api:
+
+[Click aquí para ir al repositorio del backend de este proyecto.](https://github.com/lamaolo/mern-chat-backend)
+
 ### To-do:
 
 - Habilitar opción para crear usuarios (el endpoint ya existe en la API).
